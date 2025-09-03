@@ -1,53 +1,58 @@
 #==============================
-# TWRP recovery.fstab for CS611
-# Auto-generated, compatible with your device
+# CS611 recovery.fstab (TWRP)
 #==============================
 
-# Main system partitions
-/system       ext4    /dev/block/platform/bootdevice/by-name/system
-/vendor       ext4    /dev/block/platform/bootdevice/by-name/vendor
-/data         ext4    /dev/block/dm-0
-/cache        ext4    /dev/block/platform/bootdevice/by-name/cache
-/recovery     ext4    /dev/block/platform/bootdevice/by-name/recovery
-/boot         ext4    /dev/block/platform/bootdevice/by-name/boot
+# System partition (already mounted as ro)
+# /system ext4 /dev/block/platform/bootdevice/by-name/system ro
 
-# Vendor-related partitions
-/vendor/protect_f   ext4    /dev/block/platform/bootdevice/by-name/protect1
-/vendor/protect_s   ext4    /dev/block/platform/bootdevice/by-name/protect2
-/vendor/nvdata      ext4    /dev/block/platform/bootdevice/by-name/nvdata
-/vendor/nvcfg       ext4    /dev/block/platform/bootdevice/by-name/nvcfg
+# Vendor partition
+/vendor ext4 /dev/block/platform/bootdevice/by-name/vendor
 
-# Security & configuration partitions
-/seccfg        emmc    /dev/block/platform/bootdevice/by-name/seccfg
-/tee1          emmc    /dev/block/platform/bootdevice/by-name/tee1
-/tee2          emmc    /dev/block/platform/bootdevice/by-name/tee2
-/nvram         emmc    /dev/block/platform/bootdevice/by-name/nvram
-/proinfo       emmc    /dev/block/platform/bootdevice/by-name/proinfo
-/persistent    emmc    /dev/block/platform/bootdevice/by-name/frp
+# Data partition
+/data ext4 /dev/block/mmcblk0p33
 
-# Bootloader and misc partitions
-/bootloader    emmc    /dev/block/platform/bootdevice/by-name/lk
-/bootloader2   emmc    /dev/block/platform/bootdevice/by-name/lk2
-/misc          emmc    /dev/block/platform/bootdevice/by-name/para
-/boot_para     emmc    /dev/block/platform/bootdevice/by-name/boot_para
-/odmdtbo       emmc    /dev/block/platform/bootdevice/by-name/odmdtbo
-/loader_ext1   emmc    /dev/block/platform/bootdevice/by-name/loader_ext1
-/loader_ext2   emmc    /dev/block/platform/bootdevice/by-name/loader_ext2
+# Cache partition
+/cache ext4 /dev/block/mmcblk0p32
 
-# Logo and other resources
-/logo          emmc    /dev/block/platform/bootdevice/by-name/logo
-/expdb         emmc    /dev/block/platform/bootdevice/by-name/expdb
-/gz1           emmc    /dev/block/platform/bootdevice/by-name/gz1
-/gz2           emmc    /dev/block/platform/bootdevice/by-name/gz2
+# Recovery and boot
+/recovery ext4 /dev/block/platform/bootdevice/by-name/recovery
+/boot ext4 /dev/block/platform/bootdevice/by-name/boot
 
-# Modem firmware partitions
-/md1img        emmc    /dev/block/platform/bootdevice/by-name/md1img
-/md1dsp        emmc    /dev/block/platform/bootdevice/by-name/md1dsp
-/md1arm7       emmc    /dev/block/platform/bootdevice/by-name/md1arm7
-/md3img        emmc    /dev/block/platform/bootdevice/by-name/md3img
-/spmfw         emmc    /dev/block/platform/bootdevice/by-name/spmfw
-/mcupmfw       emmc    /dev/block/platform/bootdevice/by-name/mcupmfw
+# Vendor protection and nvdata
+/vendor/protect_f ext4 /dev/block/platform/bootdevice/by-name/protect1
+/vendor/protect_s ext4 /dev/block/platform/bootdevice/by-name/protect2
+/vendor/nvdata ext4 /dev/block/platform/bootdevice/by-name/nvdata
+/vendor/nvcfg ext4 /dev/block/platform/bootdevice/by-name/nvcfg
 
-# Auto-mounted or USB partitions
-auto           vfat    /devices/bootdevice*
-auto           vfat    /devices/platform/mt_usb*
+# Security partitions
+/seccfg emmc /dev/block/platform/bootdevice/by-name/seccfg
+/tee1 emmc /dev/block/platform/bootdevice/by-name/tee1
+/tee2 emmc /dev/block/platform/bootdevice/by-name/tee2
+/nvram emmc /dev/block/platform/bootdevice/by-name/nvram
+/proinfo emmc /dev/block/platform/bootdevice/by-name/proinfo
+/persistent emmc /dev/block/platform/bootdevice/by-name/frp
+
+# Bootloader partitions
+/bootloader emmc /dev/block/platform/bootdevice/by-name/lk
+/bootloader2 emmc /dev/block/platform/bootdevice/by-name/lk2
+/misc emmc /dev/block/platform/bootdevice/by-name/para
+/boot_para emmc /dev/block/platform/bootdevice/by-name/boot_para
+/odmdtbo emmc /dev/block/platform/bootdevice/by-name/odmdtbo
+/loader_ext1 emmc /dev/block/platform/bootdevice/by-name/loader_ext1
+/loader_ext2 emmc /dev/block/platform/bootdevice/by-name/loader_ext2
+
+# Logos, firmware, modem partitions
+/logo emmc /dev/block/platform/bootdevice/by-name/logo
+/expdb emmc /dev/block/platform/bootdevice/by-name/expdb
+/gz1 emmc /dev/block/platform/bootdevice/by-name/gz1
+/gz2 emmc /dev/block/platform/bootdevice/by-name/gz2
+/md1img emmc /dev/block/platform/bootdevice/by-name/md1img
+/md1dsp emmc /dev/block/platform/bootdevice/by-name/md1dsp
+/md1arm7 emmc /dev/block/platform/bootdevice/by-name/md1arm7
+/md3img emmc /dev/block/platform/bootdevice/by-name/md3img
+/spmfw emmc /dev/block/platform/bootdevice/by-name/spmfw
+/mcupmfw emmc /dev/block/platform/bootdevice/by-name/mcupmfw
+
+# Auto-mounted USB partitions
+auto vfat /devices/bootdevice*
+auto vfat /devices/platform/mt_usb*
